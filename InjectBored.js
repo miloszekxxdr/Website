@@ -1,7 +1,7 @@
-// Deletes the entire page content
+// Deletes the whole web content
 document.body.innerHTML = '';
 
-// Creates an iframe to play the Rickroll
+// Creates the iframe
 let iframe = document.createElement('iframe');
 iframe.src = 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&loop=1';
 iframe.style.position = 'fixed';
@@ -12,5 +12,4 @@ iframe.style.height = '100vh';
 iframe.style.border = 'none';
 iframe.allow = 'autoplay';
 
-// Append iframe to body
 document.body.appendChild(iframe);
