@@ -3,7 +3,7 @@ document.body.innerHTML = '';
 
 // Creates an iframe
 let iframe = document.createElement('iframe');
-iframe.src = 'https://www.youtube.com/embed/nq13YYp8SNU?autoplay=1&loop=1';
+iframe.src = 'https://www.youtube.com/embed/q-Y0bnx6Ndw?autoplay=1&loop=1';
 iframe.style.position = 'fixed';
 iframe.style.top = '0';
 iframe.style.left = '0';
