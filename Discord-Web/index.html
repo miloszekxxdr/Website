@@ -31,15 +31,17 @@
   <script>
     let socket = null;
     let roomName = "room1";  // Default room name
+    let socketConnected = false;  // Track if socket is connected
 
     // Initialize WebSocket connection
     function initWebSocket() {
       try {
         // Make sure the WebSocket URL uses "wss://" for secure connections
-        socket = new WebSocket('wss://51ca-91-236-132-232.ngrok-free.app');
+        socket = new WebSocket('wss://9b74-91-236-132-232.ngrok-free.app');
 
         socket.onopen = function() {
           console.log('WebSocket connection established');
+          socketConnected = true; // Update socket connection status
         };
 
         socket.onmessage = function(event) {
@@ -55,6 +57,7 @@
 
         socket.onclose = function() {
           console.log('WebSocket connection closed');
+          socketConnected = false;  // Update socket connection status
         };
       } catch (error) {
         console.error('Failed to initialize WebSocket:', error);
@@ -66,12 +69,18 @@
       const messageInput = document.getElementById('messageInput');
       const message = messageInput.value;
 
-      if (socket && socket.readyState === WebSocket.OPEN) {
+      // Check if socket is connected and ready to send messages
+      if (socket && socketConnected && socket.readyState === WebSocket.OPEN) {
         socket.send(message);
         console.log('Sent message:', message);
         messageInput.value = '';  // Clear input field
       } else {
-        console.error('WebSocket is not open.');
+        console.error('WebSocket is not open. Retrying...');
+        // Retry connecting to the WebSocket server if the connection is not open
+        if (!socketConnected) {
+          console.log('Retrying WebSocket connection...');
+          initWebSocket();
+        }
       }
     }
 
