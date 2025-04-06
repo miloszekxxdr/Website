@@ -96,7 +96,7 @@
     let ws;
 
     function initWebSocket() {
-      ws = new WebSocket("ws://9b74-91-236-132-232.ngrok-free.app");
+      const socket = new WebSocket('wss://51ca-91-236-132-232.ngrok-free.app/');
 
       ws.onmessage = (event) => {
         const msg = document.createElement("div");
